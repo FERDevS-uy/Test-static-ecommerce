@@ -1,6 +1,6 @@
 const config = {
   pageTitle: "Static Ecommerce title",
-  pageLogo: "/logoFD.svg",
+  pageLogo: "template-static-ecommerce/logoFD.svg",
 };
 
 export default config;
