@@ -25,6 +25,8 @@ const { producto, imagen, precio, categorias, linkPago } = Astro.props;
     <span>${precio}</span>
     <p>{categorias.join(", ")}</p>
 
-    <a href={linkPago} target="_blank" rel="noopener noreferrer">comprar</a>
+    <a href={linkPago} target="_blank" rel="noopener noreferrer"
+      >comprar (esto es una prueba, no se supone que pagues)</a
+    >
   </main>
 </Layout>
