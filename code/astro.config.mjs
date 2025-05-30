@@ -2,9 +2,12 @@
 import { defineConfig } from "astro/config";
 
 const repositoryName = "/Test-static-ecommerce";
-const url = `https://ferdevs-uy.github.io${repositoryName}/`;
+const configData = {
+  site: `https://ferdevs-uy.github.io${repositoryName}/`,
+  base: repositoryName,
+};
+const config = { ...configData, pageTitle: "Test Ecommerce title" };
+export { config };
 
 // https://astro.build/config
-export default defineConfig({
-  site: url,
-});
+export default defineConfig(configData);
