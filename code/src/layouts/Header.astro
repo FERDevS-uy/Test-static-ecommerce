@@ -11,7 +11,7 @@ import logoFD from "../assets/logoFD.svg";
       <div class="logoContainer">
         <a href={config.base}>
           <Image src={logoFD} alt="" width={50} />
-          <h1>{config.pageTitle}</h1>
+          <h1 class="title">{config.pageTitle}</h1>
         </a>
       </div>
 
@@ -23,16 +23,21 @@ import logoFD from "../assets/logoFD.svg";
 
   <MenuItems class="itemsBox hidden">
     <ul>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/about">Sobre nosotros</a></li>
+      <li><a class="menuItem" href="/">Inicio</a></li>
+      <li><a class="menuItem" href="/about">Sobre nosotros</a></li>
     </ul>
   </MenuItems>
 </header>
 
 <style>
   header {
+    --header-height: 70px;
+    --menuIcon-size: 3rem;
+
     padding-inline: 10px;
     padding-block: 10px;
+    height: var(--header-height);
+    background-color: #fff;
   }
 
   .headerContainer {
@@ -46,9 +51,81 @@ import logoFD from "../assets/logoFD.svg";
     align-items: center;
     gap: 5px;
     width: max-content;
+    text-decoration: none;
   }
-  .logoContainer h1 {
+  .logoContainer .title {
     font-size: 1.5rem;
+    color: var(--base-color);
+  }
+
+  .menuIcon {
+    width: var(--menuIcon-size);
+    height: var(--menuIcon-size);
+  }
+
+  .itemsBox {
+    background-color: rgb(255 255 255 / 85%);
+    height: calc(100vh - var(--header-height));
+    position: absolute;
+    top: var(--header-height);
+    right: 0;
+    transition: 0.5s;
+    z-index: 2;
+    overflow-x: hidden;
+  }
+  .itemsBox:not(.hidden) {
+    width: 100%;
+  }
+  .itemsBox.hidden {
+    display: block;
+    width: 0;
+  }
+  .itemsBox ul {
+    list-style: none;
+  }
+  .itemsBox .menuItem {
+    padding: 2rem 1rem;
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    background-color: var(--base-color);
+    color: white;
+  }
+  .itemsBox .menuItem:hover {
+    background-color: var(--base-color-blur);
+  }
+
+  @media screen and (min-width: 1000px) {
+    header {
+      padding-inline: 2rem;
+    }
+
+    .navMenu {
+      display: none;
+    }
+
+    .itemsBox,
+    .itemsBox.hidden {
+      width: initial;
+      top: 0;
+      right: 2rem;
+      height: fit-content;
+    }
+    .itemsBox ul {
+      display: flex;
+      flex-direction: row;
+      gap: 1px;
+    }
+    .itemsBox .menuItem {
+      padding: 0.5rem 1rem;
+    }
+    .itemsBox li:first-of-type .menuItem {
+      border-end-start-radius: 10px;
+    }
+    .itemsBox li:last-of-type .menuItem {
+      border-end-end-radius: 10px;
+    }
   }
 </style>
 <style is:global>
@@ -58,5 +135,9 @@ import logoFD from "../assets/logoFD.svg";
     cursor: pointer;
     background-image: none;
     color: inherit;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>

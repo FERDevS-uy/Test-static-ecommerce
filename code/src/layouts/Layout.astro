@@ -19,7 +19,9 @@ const isDev = true;
   <body id="body" class={isDev ? "dev" : ""}>
     <Header />
 
-    <slot />
+    <main>
+      <slot />
+    </main>
 
     <Footer />
   </body>
@@ -33,22 +35,33 @@ const isDev = true;
     height: 100%;
   }
 
+  html {
+    font-family: system-ui, sans-serif;
+  }
+
   body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    min-height: 100vh;
   }
   body.dev::before {
+    font-family: initial;
     content: "TEMPLATE";
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-55deg);
     font-size: 5rem;
     color: rgba(255, 0, 0, 0.2); /* rojo con transparencia */
     font-weight: bold;
     pointer-events: none;
     white-space: nowrap;
     z-index: 0;
+  }
+
+  main {
+    flex: 1;
   }
 </style>
 <GlobalStyles />

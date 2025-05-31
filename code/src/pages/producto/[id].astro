@@ -18,15 +18,115 @@ const { name, img, price, categories, paymentLink } = Astro.props;
 ---
 
 <Layout>
-  <main>
-    <a href={config.base}>← Volver</a>
-    <h2>{name}</h2>
-    <img src={img} alt="" width="150px" />
-    <span>${price}</span>
-    <p>{categories.join(", ")}</p>
+  <section class="productContainer">
+    <div class="infoBox">
+      <h2>{name}</h2>
 
-    <a href={paymentLink} target="_blank" rel="noopener noreferrer"
-      >comprar (no pagar, es una prueba)</a
-    >
-  </main>
+      <div class="categories">
+        {
+          categories.map((c) => (
+            <a href={`${config.base}/categories/${c}`} class="categoryTag">
+              {c}
+            </a>
+          ))
+        }
+      </div>
+
+      <span class="price">${price}</span>
+
+      <a
+        href={paymentLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="paymentLink"
+        id="paymentLink">Comprar ahora</a
+      >
+    </div>
+
+    <div class="imgContainer">
+      <img src={img} alt="" />
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .productContainer {
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  .infoBox {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .imgContainer {
+    max-width: 500px;
+  }
+  .imgContainer img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-block: 10px;
+  }
+  .categories .categoryTag {
+    text-decoration: none;
+    background-color: var(--base-color);
+    border-radius: 25px;
+    padding: 5px 10px;
+    color: #fff;
+  }
+  .categories .categoryTag:hover {
+    background-color: var(--base-color-blur);
+  }
+
+  .price {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .paymentLink {
+    display: block;
+    background-color: var(--ok-color);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .paymentLink:hover {
+    background-color: var(--ok-color-light);
+  }
+
+  @media screen and (min-width: 1000px) {
+    .productContainer {
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    .infoBox {
+      float: right;
+      margin: 0;
+      height: 100%;
+      width: 35%;
+    }
+  }
+</style>
+
+<script>
+  const paymentLink = document.getElementById("paymentLink");
+
+  paymentLink?.addEventListener("click", () => {
+    alert("Esto es una prueba, no pagar!");
+  });
+</script>

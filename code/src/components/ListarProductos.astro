@@ -9,7 +9,22 @@ const { products: productos } = Astro.props as Props;
 ---
 
 <section class="listaProductos">
-  <ul>
-    {productos.map((prod) => <ItemProductoBox producto={prod} />)}
-  </ul>
+  {productos.map((prod) => <ItemProductoBox producto={prod} />)}
 </section>
+
+<style>
+  .listaProductos {
+    padding: 1rem;
+  }
+  @media screen and (min-width: 1000px) {
+    .listaProductos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+    }
+  }
+</style>

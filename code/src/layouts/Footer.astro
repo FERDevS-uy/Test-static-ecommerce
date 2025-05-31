@@ -1,3 +1,54 @@
 <footer>
-  <h2>Footer</h2>
+  <div class="content">
+    <div class="column socialWebs">
+      <h3>Redes Sociales</h3>
+      <ul>
+        <li>Whatsapp</li>
+        <li>Fecebook</li>
+      </ul>
+    </div>
+    <div class="column about">
+      <h3>Sobre Nosotros</h3>
+      <ul>
+        <li>Dirección</li>
+        <li>Teléfono</li>
+      </ul>
+    </div>
+  </div>
 </footer>
+
+<style>
+  footer {
+    background-color: #fff;
+    margin-top: 2rem;
+  }
+
+  .content {
+    padding: 1rem 1rem 2rem;
+  }
+
+  .column {
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+
+  .column h3 {
+    text-decoration: underline;
+    text-decoration-color: var(--base-color);
+    margin-bottom: 0.5rem;
+  }
+  .column ul {
+    margin-left: 1.5rem;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .content {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      max-width: 800px;
+      margin-inline: auto;
+    }
+  }
+</style>
