@@ -14,13 +14,14 @@ export function getStaticPaths() {
   });
 }
 
-const { name, img, price, categories, paymentLink } = Astro.props;
+const { name, img, price, categories, paymentLink, description } = Astro.props;
 ---
 
 <Layout>
   <section class="productContainer">
     <div class="infoBox">
       <h2>{name}</h2>
+      <p>{description}</p>
 
       <div class="categories">
         {
@@ -34,17 +35,25 @@ const { name, img, price, categories, paymentLink } = Astro.props;
 
       <span class="price">${price}</span>
 
-      <a
-        href={paymentLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="paymentLink"
-        id="paymentLink">Comprar ahora</a
-      >
+      <div class="paymentsMethods">
+        {
+          paymentLink.map((p) => (
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="paymentLink"
+              id="paymentLink"
+            >
+              {p.id}
+            </a>
+          ))
+        }
+      </div>
     </div>
 
     <div class="imgContainer">
-      <img src={img} alt="" />
+      {img.map((i) => <img src={i} alt="" />)}
     </div>
   </section>
 </Layout>
