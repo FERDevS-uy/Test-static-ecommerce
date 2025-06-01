@@ -23,8 +23,10 @@ import logoFD from "../assets/logoFD.svg";
 
   <MenuItems class="itemsBox hidden">
     <ul>
-      <li><a class="menuItem" href="/">Inicio</a></li>
-      <li><a class="menuItem" href="/about">Sobre nosotros</a></li>
+      <li><a class="menuItem" href={config.base}>Inicio</a></li>
+      <li>
+        <a class="menuItem" href={`${config.base}/about`}>Sobre nosotros</a>
+      </li>
     </ul>
   </MenuItems>
 </header>
